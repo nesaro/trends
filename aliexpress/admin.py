@@ -20,7 +20,7 @@ class ProductAdminModel(admin.ModelAdmin):
 
     fieldsets = [
 
-        ('Main info', {'fields': ['name', 'description', 'rate']}),
+        ('Main info', {'fields': ['name', 'description']}),
 
     ]
 

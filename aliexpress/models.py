@@ -1,31 +1,39 @@
 from django.db import models
 
 
-class Price(models.Model):
-
-    price = models.IntegerField(max_length=999999)
-
-
 class Rate(models.Model):
 
-    rate = models.IntegerField(max_length=100)
+    rate = models.IntegerField()
 
 
-class Images(models.Model):
+class Image(models.Model):
 
-    images = models.ImageField()
+    image = models.ImageField()
 
 
-class Goods(models.Model):
+class Price(models.Model):
+
+    price = models.DecimalField(decimal_places=3, max_digits=9999999)
+
+    date_time = models.DateTimeField()
+
+
+class Category(models.Model):
+
+    category = models.CharField(max_length=100)
+
+
+class Product(models.Model):
 
     name = models.CharField(max_length=200)
 
-    category = models.CharField(max_length=200)
+    description = models.TextField()
 
-    description = models.CharField(max_length=1000)
-
-    images = models.ForeignKey(Images)
+    image = models.ForeignKey(Image)
 
     rate = models.ForeignKey(Rate)
 
     price = models.ForeignKey(Price)
+
+    def __str__(self):
+        return self.name

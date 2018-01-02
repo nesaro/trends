@@ -9,7 +9,8 @@ import os.path
 class AliexpressModelsTesting(TestCase):
 
     def test_pollute_Product_model(self):
-        new_one = models.Product(name='Gold', description="Scrooge McDuck's gold", rate=self.test_pollute_Rate_model())
+        new_one = models.Product(name='Gold', description="Scrooge McDuck's gold", rate=self.test_pollute_Rate_model(),
+                                 category=self.test_pollute_Category_model())
         self.assertTrue(new_one)
         self.assertIsNone(new_one.save())
         return new_one
@@ -20,7 +21,7 @@ class AliexpressModelsTesting(TestCase):
         self.assertIsNone(new_one.save())
         return new_one
 
-    def test_pollute_Category(self):
+    def test_pollute_Category_model(self):
         new_one = models.Category(category='Books')
         self.assertTrue(new_one)
         self.assertIsNone(new_one.save())

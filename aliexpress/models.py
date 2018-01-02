@@ -10,6 +10,9 @@ class Category(models.Model):
 
     category = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.category
+
 
 class Product(models.Model):
 
@@ -18,6 +21,8 @@ class Product(models.Model):
     description = models.TextField()
 
     rate = models.ForeignKey(Rate)
+
+    category = models.ForeignKey(Category)
 
     def __str__(self):
         return self.name

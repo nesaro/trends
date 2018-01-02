@@ -20,7 +20,7 @@ class ProductAdminModel(admin.ModelAdmin):
 
     fieldsets = [
 
-        ('Main info', {'fields': ['name', 'description']}),
+        ('Main info', {'fields': ['name', 'description', 'category']}),
 
     ]
 
@@ -31,3 +31,4 @@ admin.site.register(ali_models.Price)
 admin.site.register(ali_models.Image)
 admin.site.register(ali_models.Product, ProductAdminModel)
 admin.site.register(ali_models.Rate)
+admin.site.register(models.Category)

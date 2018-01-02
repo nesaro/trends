@@ -1,9 +1,10 @@
 from django.test import TestCase
 from aliexpress import models
-import datetime
-from PIL import Image
-from trends import settings
-import os.path
+from django.utils import timezone
+
+# from PIL import Image
+# from trends import settings
+# import os.path
 
 
 class AliexpressModelsTesting(TestCase):
@@ -28,7 +29,7 @@ class AliexpressModelsTesting(TestCase):
         return new_one
 
     def test_pollute_Price_model(self):
-        new_one = models.Price(price=676.50, date_time=datetime.datetime.now(), product=self.test_pollute_Product_model())
+        new_one = models.Price(price=676.50, date_time=timezone.now(), product=self.test_pollute_Product_model())
         self.assertTrue(new_one)
         self.assertIsNone(new_one.save())
         return new_one

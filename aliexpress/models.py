@@ -32,7 +32,7 @@ class Price(models.Model):
 
     price = models.DecimalField(decimal_places=3, max_digits=9999999)
 
-    date_time = models.DateTimeField()
+    created_at = models.DateTimeField()
 
     product = models.ForeignKey(Product)
 

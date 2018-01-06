@@ -17,7 +17,7 @@ class AliexpressModelsTesting(TestCase):
                                       category=self.category)
         self.price = models.Price(price=676.50, created_at=timezone.now(), product=self.product)
 
-    def saving_entries(self):
+    def test_saving_entries(self):
         self.assertIsNone(self.rate.save())
         self.assertIsNone(self.category.save())
         self.assertIsNone(self.product.save())

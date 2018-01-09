@@ -18,4 +18,6 @@ class Command(BaseCommand):  # Simple command for data polluting
                        category=self.product_category)
         self.new_product.save()
 
+        # self.stdout.write('%s %s' % (args, options)) # for debugging
+
         self.stdout.write(self.style.SUCCESS('Successfully populate data'))

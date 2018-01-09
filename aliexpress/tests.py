@@ -37,6 +37,5 @@ class CommandTesting(TestCase):
 
         self.assertTrue(our_command)
 
-        our_command.handle()
-
-        our_command.new_product.delete(), our_command.product_rate.delete(), our_command.product_category.delete()
+        # our_command.handle(verbosity=1, settings=None, pythonpath=None, traceback=False, no_color=False)
+        our_command.handle()  # NOBODY WORKS!

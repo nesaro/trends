@@ -26,3 +26,17 @@ class AliExpressModelsTesting(TestCase):
         self.assertTrue(self.product)
         self.assertTrue(self.price)
 
+
+class CommandTesting(TestCase):
+
+    def test_command(self):
+        from aliexpress.management.commands import pollute
+        from sys import stdout, stderr
+
+        our_command = pollute.Command(stdout=stdout, stderr=stderr)
+
+        self.assertTrue(our_command)
+
+        our_command.handle()
+
+        our_command.new_product.delete(), our_command.product_rate.delete(), our_command.product_category.delete()

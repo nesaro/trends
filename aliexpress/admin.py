@@ -1,18 +1,17 @@
 from django.contrib import admin
 from aliexpress import models as ali_models
-from aliexpress import models
 
 
 class ImagesInlineModel(admin.StackedInline):
 
-    model = models.Image
+    model = ali_models.Image
 
     extra = 1
 
 
 class PriceInlineModel(admin.TabularInline):
 
-    model = models.Price
+    model = ali_models.Price
     extra = 1
 
 
@@ -31,4 +30,4 @@ admin.site.register(ali_models.Price)
 admin.site.register(ali_models.Image)
 admin.site.register(ali_models.Product, ProductAdminModel)
 admin.site.register(ali_models.Rate)
-admin.site.register(models.Category)
+admin.site.register(ali_models.Category)

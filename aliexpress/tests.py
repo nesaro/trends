@@ -26,3 +26,16 @@ class AliExpressModelsTesting(TestCase):
         self.assertTrue(self.product)
         self.assertTrue(self.price)
 
+
+class CommandTesting(TestCase):
+
+    def test_command(self):
+        from aliexpress.management.commands import pollute
+        from sys import stdout, stderr
+
+        our_command = pollute.Command(stdout=stdout, stderr=stderr)
+
+        self.assertTrue(our_command)
+
+        # our_command.handle(verbosity=1, settings=None, pythonpath=None, traceback=False, no_color=False)
+        our_command.handle()  # NOBODY WORKS!

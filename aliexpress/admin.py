@@ -19,9 +19,11 @@ class ProductAdminModel(admin.ModelAdmin):
 
     fieldsets = [
 
-        ('Main info', {'fields': ['name', 'description', 'category']}),
+        ('Main info', {'fields': ['name', 'description', 'category', 'rate']}),
 
     ]
+
+    list_display = ['name', 'category', 'rate']
 
     inlines = [ImagesInlineModel, PriceInlineModel]
 

@@ -46,6 +46,7 @@ class Command(BaseCommand):  # Simple command for data polluting
                     [models.Price(product=prod, created_at=back_to(how_many), price=random.randint(0, 10000))
                      for how_many in range(200)]
                 )
+                how_many += 1
                 self.stdout.write('Product %s, Category: %s' % (prod, categ))
 
         self.stdout.write(self.style.SUCCESS('Successfully populate data'))

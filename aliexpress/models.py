@@ -39,6 +39,9 @@ class Price(models.Model):
 
     product = models.ForeignKey(Product, models.CASCADE)
 
+    def __str__(self):
+        return str(self.created_at)
+
 
 class Image(models.Model):
 

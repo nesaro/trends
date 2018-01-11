@@ -1,4 +1,4 @@
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from aliexpress import models
 from aliexpress.utils import string_generator, back_to
 import random

@@ -1,6 +1,6 @@
 import random
 from string import ascii_letters
-import django.utils.timezone as t
+from django.utils import timezone
 
 
 def string_generator(max_length):
@@ -16,5 +16,5 @@ def string_generator(max_length):
 
 
 def back_to(days_count):
-    the_day = t.now() - t.timedelta(days=days_count)
+    the_day = timezone.now() - timezone.timedelta(days=days_count)
     return the_day

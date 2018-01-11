@@ -43,17 +43,17 @@ class Command(BaseCommand):  # Simple command for data populating
                 [models.Product(name=string_generator(12), description=string_generator(54),
                                     rate=choose_rate(), category=category) for p in range(PRODUCTS_FOR_CATEGORY)])
 
-            for prod in product_objects:
-                prod.save()
+            for product in product_objects:
+                product.save()
 
                 how_many_products += 1
 
                 price_objects = models.Price.objects.bulk_create(
-                    [models.Price(product=prod, created_at=back_to(how_many_days_ago), price=random.randint(0, 10000))
+                    [models.Price(product=product, created_at=back_to(how_many_days_ago), price=random.randint(0, 10000))
                      for how_many_days_ago in range(200)]
                 )
 
                 self.stdout.write('Product %s, Category: %s Number: %s of %s' %
-                                  (prod, category, how_many_products, PRODUCTS_NUMBER))
+                                  (product, category, how_many_products, PRODUCTS_NUMBER))
 
         self.stdout.write(self.style.SUCCESS('Successfully populate data'))

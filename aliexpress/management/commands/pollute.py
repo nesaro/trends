@@ -43,7 +43,7 @@ class Command(BaseCommand):  # Simple command for data populating
                 [models.Product(name=string_generator(12), description=string_generator(54),
                                     rate=choose_rate(), category=category) for p in range(PRODUCTS_FOR_CATEGORY)])
 
-            for product in product_objects:
+            for product in category.product_set.all():
                 product.save()
 
                 how_many_products += 1

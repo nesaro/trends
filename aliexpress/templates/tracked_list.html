@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tracked List</title>
+</head>
+<body>
+    <form method="post" action="{% url 'aliexpress:track' %}">
+        <h3>Please choose product to track it.</h3>
+        {{ form }}
+        <input type="submit" value="Submit"/>
+    </form>
+
+</body>
+</html>

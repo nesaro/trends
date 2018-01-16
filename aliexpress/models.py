@@ -52,3 +52,10 @@ class Image(models.Model):
 
     def __str__(self):
         return self.image.name
+
+
+class TrackedList(models.Model):
+
+    user = models.ForeignKey(User, models.CASCADE)
+
+    product = models.ForeignKey(Product, models.CASCADE)

@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
-from aliexpress.forms import UserLoginForm
+from aliexpress.forms import UserLoginForm, TrackedProduct
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 
@@ -36,6 +36,18 @@ class Login(TemplateView):
         return HttpResponse('Please enter correct data!')
 
 
+class TrackedList(TemplateView):
+    template_name = 'tracked_list.html'
+    extra_context = {'form': TrackedProduct()}
+
+    def post(self, request):
+        form = TrackedProduct(request.POST)
+        if form.is_valid():
+            return HttpResponse('OK')
+        else:
+            return HttpResponse('Failed')
+
+
 @login_required
 def login_test(request):
-    return HttpResponse('You are inside!')
+    return HttpResponse('You are logged in!')

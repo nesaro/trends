@@ -27,7 +27,8 @@ class Login(TemplateView):
 
     def post(self, request):
         form = UserLoginForm(request.POST)
-        user = authenticate(request, username=request.POST.get('username'),
+        user = authenticate(request,
+                         username=request.POST.get('username'),
                          password=request.POST.get('password'))
         if user.is_active:
             login(request, user)

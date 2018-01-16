@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from aliexpress.models import TrackedList
+from aliexpress.models import TrackedListModel
 
 
 class UserLoginForm(forms.ModelForm):
@@ -12,5 +12,5 @@ class UserLoginForm(forms.ModelForm):
 
 class TrackedProduct(forms.ModelForm):
     class Meta:
-        model = TrackedList
+        model = TrackedListModel
         fields = ['product']

@@ -5,7 +5,7 @@
     <title>Tracked List</title>
 </head>
 <body>
-    <form method="post" action="{% url 'aliexpress:track' %}">
+    <form method="post" action="{% url 'aliexpress:track' %}"> {% csrf_token %}
         <h3>Please choose product to track it.</h3>
         {{ form }}
         <input type="submit" value="Submit"/>

@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from aliexpress.forms import UserLoginForm, TrackedProduct
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from aliexpress.models import TrackedListModel, User, Product
 
 
 class Register(TemplateView):
@@ -43,6 +44,10 @@ class TrackedList(TemplateView):
     def post(self, request):
         form = TrackedProduct(request.POST)
         if form.is_valid():
+            add = TrackedListModel(user=User.objects.get(username=request.user),
+                                   product=Product.objects.get(pk=request.POST.get('product')))
+            add.save()
+
             return HttpResponse('OK')
         else:
             return HttpResponse('Failed')

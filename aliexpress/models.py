@@ -17,6 +17,9 @@ class Category(models.Model):
     def __str__(self):
         return self.category
 
+    class Meta:
+        verbose_name_plural = 'Categories'
+
 
 class Product(models.Model):
 
@@ -54,7 +57,7 @@ class Image(models.Model):
         return self.image.name
 
 
-class TrackedList(models.Model):
+class TrackedListModel(models.Model):
 
     user = models.ForeignKey(User, models.CASCADE)
 

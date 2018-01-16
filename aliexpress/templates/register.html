@@ -5,7 +5,7 @@
     <title>Login</title>
 </head>
 <body>
-    <form method="post" action="{% url 'aliexpress:login' %}"> {% csrf_token %}
+    <form action="{% url 'aliexpress:register' %}" method="post"> {% csrf_token %}
 
     {{ form }}
 

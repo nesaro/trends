@@ -15,11 +15,10 @@ Including another URLconf
 """
 from django.urls import path, include
 from django.contrib import admin
-from aliexpress.views import Login
+from aliexpress.views import Register
 from aliexpress import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include((urls, 'aliexpress'), namespace='aliexpress'))
-
 ]

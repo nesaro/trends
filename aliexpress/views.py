@@ -27,10 +27,7 @@ class Login(TemplateView):
     extra_context = {'form': UserLoginForm()}
 
     def post(self, request):
-        form = UserLoginForm(request.POST)
-        user = authenticate(request,
-                         username=request.POST.get('username'),
-                         password=request.POST.get('password'))
+        user = authenticate(request,  username=request.POST.get('username'), password=request.POST.get('password'))
         if user.is_active:
             login(request, user)
             return HttpResponse('You have logged in!')
@@ -55,4 +52,5 @@ class TrackedList(TemplateView):
 
 @login_required
 def login_test(request):
-    return HttpResponse('You are logged in!')
+    return HttpResponse('You have logged in !')
+

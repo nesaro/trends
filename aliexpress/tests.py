@@ -32,4 +32,4 @@ class CommandTesting(TestCase):
     def test_command(self):
         from django.core.management import call_command
 
-        call_command('pollute')
+        self.assertIsNone(call_command('pollute'))

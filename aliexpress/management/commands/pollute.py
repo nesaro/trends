@@ -10,20 +10,20 @@ class Command(BaseCommand):  # Simple command for data populating
 
     def handle(self, *args, **options):
 
-        CATEGORIES_NUMBER = 20
-        PRODUCTS_FOR_CATEGORY = 100
-        PRODUCTS_NUMBER = CATEGORIES_NUMBER * PRODUCTS_FOR_CATEGORY
+        categories_number = 20
+        products_for_category = 100
+        products_number = categories_number * products_for_category
 
-        categories = [string_generator(10) for word in range(CATEGORIES_NUMBER)]
+        categories = [string_generator(10) for _ in range(categories_number)]
 
         category_objects = models.Category.objects.bulk_create(
-            [models.Category(category=categories[product-1]) for product in range(CATEGORIES_NUMBER)]
+            [models.Category(category=categories[product-1]) for product in range(categories_number)]
         )
 
         self.stdout.write('Categories are created')
 
         rate_objects = models.Rate.objects.bulk_create(
-            [models.Rate(rate=random.randint(0, 10)) for r in range(10)]
+            [models.Rate(rate=random.randint(0, 10)) for _ in range(10)]
         )
 
         self.stdout.write('Rate objects are created')
@@ -41,18 +41,19 @@ class Command(BaseCommand):  # Simple command for data populating
 
             product_objects = models.Product.objects.bulk_create(
                 [models.Product(name=string_generator(12), description=string_generator(54),
-                                    rate=choose_rate(), category=category) for p in range(PRODUCTS_FOR_CATEGORY)])
+                                    rate=choose_rate(), category=category) for p in range(products_for_category)])
 
             for product in category.product_set.all():
 
                 how_many_products += 1
 
                 price_objects = models.Price.objects.bulk_create(
-                    [models.Price(product=product, created_at=back_to(how_many_days_ago), price=random.randint(0, 10000))
+                    [models.Price(product=product,
+                                  created_at=back_to(how_many_days_ago), price=random.randint(0, 10000))
                      for how_many_days_ago in range(200)]
                 )
 
                 self.stdout.write('Product %s, Category: %s Number: %s of %s' %
-                                  (product, category, how_many_products, PRODUCTS_NUMBER))
+                                  (product, category, how_many_products, products_number))
 
         self.stdout.write(self.style.SUCCESS('Successfully populate data'))

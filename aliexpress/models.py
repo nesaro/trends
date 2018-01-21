@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Rate(models.Model):
+class Rating(models.Model):
 
     rate = models.IntegerField()
 
@@ -27,7 +27,7 @@ class Product(models.Model):
 
     description = models.TextField()
 
-    rate = models.ForeignKey(Rate, models.CASCADE)
+    rate = models.ForeignKey(Rating, models.CASCADE)
 
     category = models.ForeignKey(Category, models.CASCADE)
 
@@ -62,3 +62,6 @@ class TrackedListModel(models.Model):
     user = models.ForeignKey(User, models.CASCADE)
 
     product = models.ForeignKey(Product, models.CASCADE)
+
+    def __str__(self):
+        return str(self.user)

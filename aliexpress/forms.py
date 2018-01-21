@@ -11,6 +11,7 @@ class UserLoginForm(forms.ModelForm):
 
 
 class TrackedProduct(forms.ModelForm):
+
     class Meta:
         model = TrackedListModel
         fields = ['product']

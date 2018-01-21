@@ -10,7 +10,7 @@ def string_generator(max_length):
 
     word = ''
 
-    for w in range(length):
+    for _ in range(length):
         word += random.choice(ascii_letters)
 
     return word

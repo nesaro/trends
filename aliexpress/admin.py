@@ -15,6 +15,7 @@ class PriceInlineModel(admin.TabularInline):
     extra = 1
 
 
+@admin.register(models.Product)
 class ProductAdminModel(admin.ModelAdmin):
 
     fieldsets = [
@@ -28,9 +29,5 @@ class ProductAdminModel(admin.ModelAdmin):
     inlines = [ImagesInlineModel, PriceInlineModel]
 
 
-admin.site.register(models.Price)
-admin.site.register(models.Image)
-admin.site.register(models.Product, ProductAdminModel)
-admin.site.register(models.Rate)
-admin.site.register(models.Category)
-admin.site.register(models.TrackedListModel)
+admin.site.register((models.Price, models.Image, models.Rating,
+                     models.Category, models.TrackedListModel), )

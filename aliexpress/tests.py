@@ -6,7 +6,7 @@ from django.utils import timezone
 class AliExpressModelsTesting(TestCase):
 
     def setUp(self):
-        self.rate = models.Rate(rate=9.6)
+        self.rate = models.Rating(rate=9.6)
         self.rate.save()
 
         self.category = models.Category(category='Books')

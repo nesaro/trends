@@ -53,4 +53,3 @@ class TrackedList(TemplateView):
 @login_required
 def login_test(request):
     return HttpResponse('You have logged in !')
-

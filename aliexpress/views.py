@@ -17,8 +17,8 @@ class Register(TemplateView):
         if form.is_valid():
             form.save()
 
-            return HttpResponse('Succes')
-        return HttpResponse('Fail')
+            return HttpResponse('Success')
+        return HttpResponse('Failed, please enter again')
 
 
 class Login(TemplateView):

@@ -29,5 +29,5 @@ class ProductAdminModel(admin.ModelAdmin):
     inlines = [ImagesInlineModel, PriceInlineModel]
 
 
-admin.site.register((models.Price, models.Image, models.Rating,
+admin.site.register((models.Price, models.Image, models.Rate,
                      models.Category, models.TrackedListModel), )

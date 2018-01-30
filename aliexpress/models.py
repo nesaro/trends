@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Rating(models.Model):
+class Rate(models.Model):
 
     rate = models.IntegerField()
 
@@ -27,7 +27,7 @@ class Product(models.Model):
 
     description = models.TextField()
 
-    rate = models.ForeignKey(Rating, models.CASCADE)
+    rate = models.ForeignKey(Rate, models.CASCADE)
 
     category = models.ForeignKey(Category, models.CASCADE)
 

@@ -22,8 +22,8 @@ class Command(BaseCommand):  # Simple command for data populating
 
         self.stdout.write('Categories are created')
 
-        rate_objects = models.Rating.objects.bulk_create(
-            [models.Rating(rate=random.randint(0, 10)) for _ in range(10)]
+        rate_objects = models.Rate.objects.bulk_create(
+            [models.Rate(rate=random.randint(0, 10)) for _ in range(10)]
         )
 
         self.stdout.write('Rate objects are created')

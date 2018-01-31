@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.urls import path, include
 from django.contrib import admin
-from aliexpress.views import Register
 from aliexpress import urls
 
 urlpatterns = [

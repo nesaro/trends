@@ -12,12 +12,14 @@ class AliExpressModelsTesting(TestCase):
         self.category = models.Category(category='Books')
         self.category.save()
 
-        self.product = models.Product(name='Gold', description="Scrooge McDuck's gold",
+        self.product = models.Product(name='Gold',
+                                      description="Scrooge McDuck's gold",
                                       rate=self.rate,
                                       category=self.category)
         self.product.save()
 
-        self.price = models.Price(price=676.50, created_at=timezone.now(), product=self.product)
+        self.price = models.Price(price=676.50, created_at=timezone.now(),
+                                  product=self.product)
         self.price.save()
 
     def test_creating_models(self):

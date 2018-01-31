@@ -17,7 +17,8 @@ class Command(BaseCommand):  # Simple command for data populating
         categories = [string_generator(10) for _ in range(categories_number)]
 
         category_objects = models.Category.objects.bulk_create(
-            [models.Category(category=categories[product-1]) for product in range(categories_number)]
+            [models.Category(category=categories[product-1])
+             for product in range(categories_number)]
         )
 
         self.stdout.write('Categories are created')
@@ -39,21 +40,25 @@ class Command(BaseCommand):  # Simple command for data populating
         for category in category_objects:
             category.save()
 
-            product_objects = models.Product.objects.bulk_create(
-                [models.Product(name=string_generator(12), description=string_generator(54),
-                                    rate=choose_rate(), category=category) for p in range(products_for_category)])
+            models.Product.objects.bulk_create(
+                [models.Product(name=string_generator(12),
+                                description=string_generator(54),
+                                rate=choose_rate(), category=category)
+                 for p in range(products_for_category)])
 
             for product in category.product_set.all():
 
                 how_many_products += 1
 
-                price_objects = models.Price.objects.bulk_create(
+                models.Price.objects.bulk_create(
                     [models.Price(product=product,
-                                  created_at=back_to(how_many_days_ago), price=random.randint(0, 10000))
+                                  created_at=back_to(how_many_days_ago),
+                                  price=random.randint(0, 10000))
                      for how_many_days_ago in range(200)]
                 )
 
                 self.stdout.write('Product %s, Category: %s Number: %s of %s' %
-                                  (product, category, how_many_products, products_number))
+                                  (product, category,
+                                   how_many_products, products_number))
 
         self.stdout.write(self.style.SUCCESS('Successfully populate data'))

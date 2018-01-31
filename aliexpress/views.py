@@ -27,7 +27,8 @@ class Login(TemplateView):
     extra_context = {'form': UserLoginForm()}
 
     def post(self, request):
-        user = authenticate(request,  username=request.POST.get('username'), password=request.POST.get('password'))
+        user = authenticate(request,  username=request.POST.get('username'),
+                            password=request.POST.get('password'))
         if user:
             login(request, user)
             return HttpResponse('You have logged in!')
@@ -42,7 +43,8 @@ class TrackedList(TemplateView):
         form = TrackedProduct(request.POST)
         if form.is_valid():
             add = TrackedListModel(user=User.objects.get(username=request.user),
-                                   product=Product.objects.get(pk=request.POST.get('product')))
+                                   product=Product.objects.get(
+                                       pk=request.POST.get('product')))
             add.save()
 
             return HttpResponse('OK')

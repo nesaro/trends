@@ -22,9 +22,10 @@ def back_to(days_count):
 
 
 def send_email(*recipients):
-    mail.send_mail(
-        'Product price changing',
-        'Hello! Price for your tracked product was changed, please check it.',
-        'email@gmail.com',
-        recipients,
-    )
+    mail.send_mail('Subscription',
+                   "Hello! Your tracked product's price has been changed.",
+                   'amazon.aliexpress@bk.ru',
+                   recipients,
+                   fail_silently=True,)
+
+    return 'Success!'

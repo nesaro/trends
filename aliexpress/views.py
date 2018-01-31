@@ -50,6 +50,12 @@ class TrackedList(TemplateView):
             return HttpResponse('Failed')
 
 
-@login_required
+@login_required()
 def login_test(request):
     return HttpResponse('You have logged in !')
+
+
+def email_test(request):
+    from aliexpress.utils import send_email
+    send_email('lezgintsev13@yandex.ru')
+    return 'Success!'

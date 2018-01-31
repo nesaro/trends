@@ -57,7 +57,7 @@ class Price(models.Model):
              update_fields=None):
         if self.price != self.__original_price:
             if TrackedListModel.objects.get(product_id=self.product_id):
-                send_email('example@domain.com')  # REPLACE IS REQUIRED!
+                send_email(str(TrackedListModel.objects.get(product_id=self.product_id).user.email))  # It can find incorrect user!
 
         super(Price, self).save(force_insert, force_update, using, update_fields)
         self.__original_price = self.price

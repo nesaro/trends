@@ -1,11 +1,13 @@
 from django.urls import path
-from aliexpress.views import Register, Login, login_test, TrackedList
+from aliexpress import views
+from django.contrib.auth.decorators import login_required
 
 
 urlpatterns = [
-    path('register/', Register.as_view(), name='register'),
-    path('login/', Login.as_view(), name='login'),
-    path('test/', login_test, name='login_test'),
-    path('track/', TrackedList.as_view(), name='track')
+    path('register/', views.Register.as_view(), name='register'),
+    path('login/', views.Login.as_view(), name='login'),
+    path('test/', views.login_test, name='login_test'),
+    path('track/', login_required(views.TrackedList.as_view()), name='track'),
+    path('email/', views.email_test, name='email_test')
 
 ]

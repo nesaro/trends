@@ -28,6 +28,7 @@ class ProductAdminModel(admin.ModelAdmin):
 
     inlines = [ImagesInlineModel, PriceInlineModel]
 
+    search_fields = ['name']
 
 admin.site.register((models.Price, models.Image, models.Rate,
                      models.Category, models.TrackedListModel), )

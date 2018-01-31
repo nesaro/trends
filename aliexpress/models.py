@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from aliexpress.utils import send_email
 
 
 class Rate(models.Model):
@@ -43,8 +44,23 @@ class Price(models.Model):
 
     product = models.ForeignKey(Product, models.CASCADE)
 
+    __original_price = None
+
     def __str__(self):
         return str(self.created_at)
+
+    def __init__(self, *args, **kwargs):
+        super(Price, self).__init__(*args, **kwargs)
+        self.__original_price = self.price
+
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        if self.price != self.__original_price:
+            if TrackedListModel.objects.get(product_id=self.product_id):
+                send_email('example@domain.com')  # REPLACE IS REQUIRED!
+
+        super(Price, self).save(force_insert, force_update, using, update_fields)
+        self.__original_price = self.price
 
 
 class Image(models.Model):
@@ -65,3 +81,7 @@ class TrackedListModel(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+    class Meta:
+        verbose_name = 'Tracked List'
+        verbose_name_plural = 'Tracked Lists'

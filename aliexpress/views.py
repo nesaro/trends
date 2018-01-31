@@ -28,7 +28,7 @@ class Login(TemplateView):
 
     def post(self, request):
         user = authenticate(request,  username=request.POST.get('username'), password=request.POST.get('password'))
-        if user.is_active:
+        if user:
             login(request, user)
             return HttpResponse('You have logged in!')
         return HttpResponse('Please enter correct data!')
@@ -50,12 +50,12 @@ class TrackedList(TemplateView):
             return HttpResponse('Failed')
 
 
-@login_required()
-def login_test(request):
+@login_required
+def login_test(_):
     return HttpResponse('You have logged in !')
 
 
-def email_test(request):
+def email_test(_):
     from aliexpress.utils import send_email
-    send_email('lezgintsev13@yandex.ru')
-    return 'Success!'
+    send_email('email@domain.com')
+    return HttpResponse('Success!')

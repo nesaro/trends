@@ -133,3 +133,5 @@ EMAIL_PORT = 465
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'amazon.aliexpress@bk.ru'
 EMAIL_HOST_PASSWORD = 'babaronda10'  # os.environ.get('EMAIL_PASSWORD')
+
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000

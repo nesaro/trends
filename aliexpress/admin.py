@@ -30,5 +30,6 @@ class ProductAdminModel(admin.ModelAdmin):
 
     search_fields = ['name']
 
+
 admin.site.register((models.Price, models.Image, models.Rate,
                      models.Category, models.TrackedListModel), )

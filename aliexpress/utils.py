@@ -17,8 +17,7 @@ def string_generator(max_length):
 
 
 def back_to(days_count):
-    the_day = timezone.now() - timezone.timedelta(days=days_count)
-    return the_day
+    return timezone.now() - timezone.timedelta(days=days_count)
 
 
 def send_email(*recipients):

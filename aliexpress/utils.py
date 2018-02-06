@@ -2,6 +2,7 @@ import random
 from string import ascii_letters
 from django.utils import timezone
 from django.core import mail
+from trends.settings import EMAIL_SUBJECT, EMAIL_TEXT, EMAIL_HOST_USER
 
 
 def string_generator(max_length):
@@ -21,10 +22,10 @@ def back_to(days_count):
 
 
 def send_email(*recipients):
-    mail.send_mail('Subscription',
-                   "Hello! Your tracked product's price has been changed.",
-                   'amazon.aliexpress@bk.ru',
+    mail.send_mail(EMAIL_SUBJECT,
+                   EMAIL_TEXT,
+                   EMAIL_HOST_USER,
                    recipients,
-                   fail_silently=True,)
+                   fail_silently=False)
 
     return 'Success!'

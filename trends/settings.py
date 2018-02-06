@@ -125,13 +125,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_URL = 'aliexpress:login'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # It needs to be changed to below one
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 465
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'amazon.aliexpress@bk.ru'
-EMAIL_HOST_PASSWORD = 'babaronda10'  # os.environ.get('EMAIL_PASSWORD')
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_USERNAME')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')  # os.environ.get('EMAIL_PASSWORD')
+
+EMAIL_SUBJECT = 'Subscription'
+EMAIL_TEXT = "Hello! Your tracked product's price has been changed! Please check this."
+
 
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000

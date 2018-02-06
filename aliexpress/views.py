@@ -57,5 +57,6 @@ def login_test(_):
 
 def email_test(_):
     from aliexpress.utils import send_email
-    send_email('email@domain.com')
+    send_email('lezgintsev13@yandex.ru')
+
     return HttpResponse('Success!')

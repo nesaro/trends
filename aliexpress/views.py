@@ -25,6 +25,14 @@ class RegisterLogin(TemplateView):
 
         return login_to()
 
+
+class ForgottenPassword(TemplateView):
+
+    template_name = 'forgotten_password.html'
+
+    def post(self, request):
+        return HttpResponse('is being developed')
+
 #
 # class Register(TemplateView):
 #
@@ -76,6 +84,6 @@ def login_test(_):
 
 def email_test(_):
     from aliexpress.utils import send_email
-    send_email('lezgintsev13@yandex.ru')
+    send_email('amazon.aliexpress@bk.ru')
 
     return HttpResponse('Success!')

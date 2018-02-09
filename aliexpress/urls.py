@@ -7,6 +7,7 @@ urlpatterns = [
     path('auth', views.RegisterLogin.as_view(), name='rlogin'),
     path('test/', views.login_test, name='login_test'),
     path('track/', login_required(views.TrackedList.as_view()), name='track'),
-    path('email/', views.email_test, name='email_test')
+    path('email/', views.email_test, name='email_test'),
+    path('recover/', views.ForgottenPassword.as_view(), name='recover_p')
 
 ]

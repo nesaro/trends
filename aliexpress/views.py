@@ -7,31 +7,50 @@ from django.contrib.auth.decorators import login_required
 from aliexpress.models import TrackedListModel, User, Product
 
 
-class Register(TemplateView):
-
-    template_name = 'register.html'
-    extra_context = {'form': UserCreationForm()}
+class RegisterLogin(TemplateView):
+    template_name = 'register_login.html'
 
     def post(self, request):
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
 
-            return HttpResponse('Success')
-        return HttpResponse('Failed, please enter again')
+        def login_to():
+            user = authenticate(request, username=request.POST.get('username'), password=request.POST.get('password'))
 
+            if user:
+                login(request, user)
+                return HttpResponse('You have logged in!')
+            return HttpResponse('Please enter correct data!')
 
-class Login(TemplateView):
+        def register_to():
+            pass
 
-    template_name = 'login.html'
-    extra_context = {'form': UserLoginForm()}
+        return login_to()
 
-    def post(self, request):
-        user = authenticate(request,  username=request.POST.get('username'), password=request.POST.get('password'))
-        if user:
-            login(request, user)
-            return HttpResponse('You have logged in!')
-        return HttpResponse('Please enter correct data!')
+#
+# class Register(TemplateView):
+#
+#     template_name = 'register.html'
+#     extra_context = {'form': UserCreationForm()}
+#
+#     def post(self, request):
+#         form = UserCreationForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#
+#             return HttpResponse('Success')
+#         return HttpResponse('Failed, please enter again')
+#
+#
+# class Login(TemplateView):
+#
+#     template_name = 'login.html'
+#     extra_context = {'form': UserLoginForm()}
+#
+#     def post(self, request):
+#         user = authenticate(request,  username=request.POST.get('username'), password=request.POST.get('password'))
+#         if user:
+#             login(request, user)
+#             return HttpResponse('You have logged in!')
+#         return HttpResponse('Please enter correct data!')
 
 
 class TrackedList(TemplateView):
